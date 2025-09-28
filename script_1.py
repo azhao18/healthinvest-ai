@@ -1,0 +1,366 @@
+# Create index.html
+html_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthInvest AI - GPT-5 Powered Healthcare Investment Platform</title>
+    <link rel="stylesheet" href="src/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💊</text></svg>">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>💊 HealthInvest AI</h1>
+                    <span class="subtitle">GPT-5 Powered Healthcare Investment Platform</span>
+                </div>
+                <div class="gpt5-badge">
+                    <span>🤖 Powered by GPT-5</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-tabs">
+                <button class="nav-tab active" data-tab="dashboard">📊 Dashboard</button>
+                <button class="nav-tab" data-tab="analysis">💰 Investment Analysis</button>
+                <button class="nav-tab" data-tab="consulting">📋 Consulting Frameworks</button>
+                <button class="nav-tab" data-tab="market">📈 Market Intelligence</button>
+                <button class="nav-tab" data-tab="risk">⚠️ Risk Assessment</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Dashboard Tab -->
+            <div class="tab-content active" id="dashboard">
+                <div class="dashboard-header">
+                    <h2>Healthcare Investment Dashboard</h2>
+                    <p>AI-powered insights for healthcare investment decisions</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Market Size</h3>
+                        <div class="stat-value">$4.9T</div>
+                        <div class="stat-change positive">↗ +12.3%</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>AI Healthcare</h3>
+                        <div class="stat-value">$15.1B</div>
+                        <div class="stat-change positive">↗ +37.5%</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Active Deals</h3>
+                        <div class="stat-value">1,247</div>
+                        <div class="stat-change positive">↗ +8.2%</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Avg Deal Size</h3>
+                        <div class="stat-value">$45M</div>
+                        <div class="stat-change negative">↘ -2.1%</div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="chart-container">
+                        <h3>Portfolio Performance</h3>
+                        <canvas id="portfolioChart"></canvas>
+                    </div>
+                    <div class="investments-list">
+                        <h3>Top Healthcare Investments</h3>
+                        <div id="investmentsList"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Investment Analysis Tab -->
+            <div class="tab-content" id="analysis">
+                <h2>Investment Analysis</h2>
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <h3>🔍 Due Diligence</h3>
+                        <p>GPT-5 powered document analysis</p>
+                        <button class="btn-primary" onclick="showFeature('due-diligence')">Analyze Documents</button>
+                    </div>
+                    <div class="analysis-card">
+                        <h3>📊 Valuation Models</h3>
+                        <p>DCF and comparable analysis</p>
+                        <button class="btn-primary" onclick="showFeature('valuation')">Run Valuation</button>
+                    </div>
+                    <div class="analysis-card">
+                        <h3>🎯 Portfolio Optimization</h3>
+                        <p>AI-driven portfolio recommendations</p>
+                        <button class="btn-primary" onclick="showFeature('portfolio')">Optimize Portfolio</button>
+                    </div>
+                </div>
+
+                <div class="valuation-calculator">
+                    <h3>Healthcare Company Valuation</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Company Type:</label>
+                            <select id="companyType">
+                                <option>Biotech</option>
+                                <option>Medical Device</option>
+                                <option>Digital Health</option>
+                                <option>Healthcare AI</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Revenue ($M):</label>
+                            <input type="number" id="revenue" placeholder="100">
+                        </div>
+                        <div class="form-group">
+                            <label>Growth Rate (%):</label>
+                            <input type="number" id="growthRate" placeholder="25">
+                        </div>
+                        <div class="form-group">
+                            <label>Stage:</label>
+                            <select id="stage">
+                                <option>Seed</option>
+                                <option>Series A</option>
+                                <option>Series B</option>
+                                <option>Growth</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn-primary" onclick="calculateValuation()">Calculate with GPT-5</button>
+                    <div id="valuationResult"></div>
+                </div>
+            </div>
+
+            <!-- Consulting Frameworks Tab -->
+            <div class="tab-content" id="consulting">
+                <h2>Consulting Frameworks</h2>
+                <div class="frameworks-grid">
+                    <div class="framework-card active" data-framework="porters">
+                        <h3>Porter's Five Forces</h3>
+                        <p>Competitive analysis for healthcare markets</p>
+                    </div>
+                    <div class="framework-card" data-framework="vbc">
+                        <h3>Value-Based Care</h3>
+                        <p>Outcome and cost analysis framework</p>
+                    </div>
+                    <div class="framework-card" data-framework="revenue">
+                        <h3>Revenue Cycle Analysis</h3>
+                        <p>Healthcare financial operations</p>
+                    </div>
+                </div>
+
+                <div class="framework-detail">
+                    <div id="porters-detail" class="framework-content active">
+                        <h3>Porter's Five Forces Analysis</h3>
+                        <div class="forces-grid">
+                            <div class="force-item">
+                                <h4>🏭 Competitive Rivalry</h4>
+                                <div class="force-meter">
+                                    <div class="force-level" style="width: 75%"></div>
+                                </div>
+                                <p>High - Intense competition in AI diagnostics</p>
+                            </div>
+                            <div class="force-item">
+                                <h4>🏪 Supplier Power</h4>
+                                <div class="force-meter">
+                                    <div class="force-level" style="width: 45%"></div>
+                                </div>
+                                <p>Medium - Specialized hardware vendors</p>
+                            </div>
+                            <div class="force-item">
+                                <h4>👥 Buyer Power</h4>
+                                <div class="force-meter">
+                                    <div class="force-level" style="width: 85%"></div>
+                                </div>
+                                <p>High - Large hospital systems have leverage</p>
+                            </div>
+                            <div class="force-item">
+                                <h4>🔄 Substitution Threat</h4>
+                                <div class="force-meter">
+                                    <div class="force-level" style="width: 60%"></div>
+                                </div>
+                                <p>Medium - Traditional diagnostic methods</p>
+                            </div>
+                            <div class="force-item">
+                                <h4>🚪 Entry Barriers</h4>
+                                <div class="force-meter">
+                                    <div class="force-level" style="width: 30%"></div>
+                                </div>
+                                <p>Low - FDA approval and capital requirements</p>
+                            </div>
+                        </div>
+                        <button class="btn-primary" onclick="generateFrameworkReport('porters')">Generate GPT-5 Analysis</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Intelligence Tab -->
+            <div class="tab-content" id="market">
+                <h2>Market Intelligence</h2>
+                <div class="market-grid">
+                    <div class="market-card">
+                        <h3>📏 Market Sizing</h3>
+                        <div class="tam-sam-som">
+                            <div class="market-circle tam">
+                                <span>TAM</span>
+                                <span>$847B</span>
+                            </div>
+                            <div class="market-circle sam">
+                                <span>SAM</span>
+                                <span>$156B</span>
+                            </div>
+                            <div class="market-circle som">
+                                <span>SOM</span>
+                                <span>$12B</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="market-trends">
+                        <h3>🔥 Trending Technologies</h3>
+                        <div class="trend-list">
+                            <div class="trend-item">
+                                <span class="trend-name">AI Diagnostics</span>
+                                <span class="trend-score">🔥🔥🔥🔥🔥</span>
+                            </div>
+                            <div class="trend-item">
+                                <span class="trend-name">Digital Therapeutics</span>
+                                <span class="trend-score">🔥🔥🔥🔥</span>
+                            </div>
+                            <div class="trend-item">
+                                <span class="trend-name">Telemedicine</span>
+                                <span class="trend-score">🔥🔥🔥</span>
+                            </div>
+                            <div class="trend-item">
+                                <span class="trend-name">Wearable Devices</span>
+                                <span class="trend-score">🔥🔥🔥🔥</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="competitive-landscape">
+                    <h3>Competitive Landscape</h3>
+                    <canvas id="competitiveChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Risk Assessment Tab -->
+            <div class="tab-content" id="risk">
+                <h2>Risk Assessment</h2>
+                <div class="risk-grid">
+                    <div class="risk-category">
+                        <h3>⚖️ Regulatory Risk</h3>
+                        <div class="risk-level high">HIGH</div>
+                        <p>FDA approval processes and healthcare regulations</p>
+                        <ul>
+                            <li>510(k) clearance timeline: 3-12 months</li>
+                            <li>PMA approval: 12-24 months</li>
+                            <li>Clinical trial requirements</li>
+                        </ul>
+                    </div>
+                    <div class="risk-category">
+                        <h3>💻 Technology Risk</h3>
+                        <div class="risk-level medium">MEDIUM</div>
+                        <p>Rapid technological changes and competition</p>
+                        <ul>
+                            <li>AI model obsolescence</li>
+                            <li>Data privacy concerns</li>
+                            <li>Integration challenges</li>
+                        </ul>
+                    </div>
+                    <div class="risk-category">
+                        <h3>🏥 Market Risk</h3>
+                        <div class="risk-level medium">MEDIUM</div>
+                        <p>Healthcare adoption cycles and reimbursement</p>
+                        <ul>
+                            <li>Slow healthcare adoption</li>
+                            <li>Reimbursement uncertainty</li>
+                            <li>Provider resistance</li>
+                        </ul>
+                    </div>
+                    <div class="risk-category">
+                        <h3>💰 Financial Risk</h3>
+                        <div class="risk-level low">LOW</div>
+                        <p>Healthcare spending continues to grow globally</p>
+                        <ul>
+                            <li>Consistent healthcare spending</li>
+                            <li>Government support</li>
+                            <li>Aging population demographics</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="risk-calculator">
+                    <h3>Clinical Trial Risk Calculator</h3>
+                    <div class="calculator-grid">
+                        <div class="calc-input">
+                            <label>Trial Phase:</label>
+                            <select id="trialPhase">
+                                <option value="1">Phase I</option>
+                                <option value="2">Phase II</option>
+                                <option value="3">Phase III</option>
+                            </select>
+                        </div>
+                        <div class="calc-input">
+                            <label>Indication:</label>
+                            <select id="indication">
+                                <option>Oncology</option>
+                                <option>Cardiology</option>
+                                <option>Neurology</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="calc-result">
+                            <h4>Success Probability</h4>
+                            <div class="probability-display">
+                                <span id="successProb">63%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-primary" onclick="calculateTrialRisk()">Calculate with GPT-5</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- GPT-5 Chat Interface -->
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <h3>💬 GPT-5 Healthcare Advisor</h3>
+            <button class="chat-toggle" id="chatToggle">−</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message ai">
+                <div class="avatar">🤖</div>
+                <div class="content">
+                    <p>Hello! I'm your GPT-5 powered healthcare investment advisor. Ask me anything about healthcare investments, market analysis, or consulting frameworks.</p>
+                    <div class="suggestions">
+                        <button onclick="askGPT('Analyze the AI diagnostics market opportunity')">AI Diagnostics Market</button>
+                        <button onclick="askGPT('Calculate ROI for telemedicine investment')">Telemedicine ROI</button>
+                        <button onclick="askGPT('Assess regulatory risks for digital therapeutics')">Regulatory Risks</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Ask GPT-5 about healthcare investments...">
+            <button id="chatSend">Send</button>
+        </div>
+    </div>
+
+    <script src="src/app.js"></script>
+</body>
+</html>'''
+
+with open('healthinvest-ai/index.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("✅ Created index.html with full healthcare investment platform")
